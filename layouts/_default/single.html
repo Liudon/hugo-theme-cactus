@@ -31,7 +31,9 @@
   <div class="content e-content" itemprop="articleBody">
     {{ .Content }}
   </div>
-  {{ partial "partials/comments.html" }}
+  {{- if (.Param "comments") }}
+  {{- partial "comments.html" . }}
+  {{- end }}
 </article>
 
 {{ end }}
