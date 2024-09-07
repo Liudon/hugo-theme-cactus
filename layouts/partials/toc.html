@@ -1,0 +1,38 @@
+<div id="header-post">
+  <a id="menu-icon" href="#" class="active"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" class="active"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="javascript:history.back(-1)">Back</a></li>
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-top" class="info" style="display: none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+        <li><a class="icon" href="http://www.facebook.com/sharer.php?u={{ .Permalink }}"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="https://twitter.com/share?url={{ .Permalink }}&text={{ .Title }}"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="http://www.linkedin.com/shareArticle?url={{ .Permalink }}&title={{ .Title }}"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url={{ .Permalink }}&is_video=false&description={{ .Title }}"><i class="fab fa-pinterest" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="mailto:?subject={{ .Title }}&body=Check out this article: {{ .Permalink }}"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="https://getpocket.com/save?url={{ .Permalink }}&title={{ .Title }}"><i class="fab fa-get-pocket" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="http://reddit.com/submit?url={{ .Permalink }}&title={{ .Title }}"><i class="fab fa-reddit" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="http://www.stumbleupon.com/submit?url={{ .Permalink }}&title={{ .Title }}"><i class="fab fa-stumbleupon" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="http://digg.com/submit?url={{ .Permalink }}&title={{ .Title }}"><i class="fab fa-digg" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="http://www.tumblr.com/share/link?url={{ .Permalink }}&name={{ .Title }}&description=<%= page.excerpt %>"><i class="fab fa-tumblr" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="https://news.ycombinator.com/submitlink?u={{ .Permalink }}&t={{ .Title }}"><i class="fab fa-hacker-news" aria-hidden="true"></i></a></li>
+      </ul>
+    </div>
+  </span>
+</div>

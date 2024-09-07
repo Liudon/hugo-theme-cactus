@@ -1,0 +1,20 @@
+name = 'Cactus'
+license = 'MIT'
+licenselink = 'https://github.com/Liudon/hugo-theme-cactus/blob/main/LICENSE'
+description = 'A responsive, clean and simple theme for hugo'
+
+homepage = 'https://github.com/Liudon/hugo-theme-cactus'
+
+demosite = 'https://liudon.com'
+
+tags = ['blog', 'responsive', 'simple', 'clean']
+features = ['responsive', 'blog']
+
+[author]
+  name = 'Liudon'
+  homepage = 'https://liudon.com'
+
+[original]
+  author = 'Pieter Robberechts'
+  homepage = 'https://github.com/probberechts'
+  repo = 'https://github.com/probberechts/hexo-theme-cactus'

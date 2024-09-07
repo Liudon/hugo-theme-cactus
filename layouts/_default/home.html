@@ -1,0 +1,32 @@
+{{ define "main" }}
+<section id="about" class="p-note">
+  {{ .Content }}
+</section>
+
+{{- $pages := union .RegularPages .Sections }}
+
+{{- if .IsHome }}
+{{- $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{- $pages = where $pages "Params.hiddenInHomeList" "!=" "true"  }}
+{{- end }}
+
+{{- $paginator := .Paginate $pages }}
+
+<section id="writing">
+  <span class="h1"><a href="{{ "posts/" | relURL }}">Posts</a></span>
+  <ul class="post-list">
+    {{- range $index, $page := $paginator.Pages }}
+      <li class="post-item">
+        <div class="meta">
+          <time datetime="{{ .Date.Format "02 Jan 2006" }}" class="dt-published" itemprop="datePublished">{{ .Date.Format "02 Jan 2006" }}</time>
+        </div>
+        <span>
+          <a class="" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+        </h1>
+        </span>
+      </li>
+    {{ end }}
+  </ul>
+</section>
+
+{{ end }}

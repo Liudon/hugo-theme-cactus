@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="{{ or site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
+<head>
+  {{ partial "head.html" . }}
+</head>
+<body class="max-width-4 mx-auto px3 ltr">
+  {{ if .IsPage }}
+  {{ partial "partials/toc.html" . }}
+  {{ end }}
+  <div class="content index py4 {{ if .IsHome }}h-card{{ end }}">
+      {{ if or .IsNode (.Param "ShowBreadCrumbs") }}
+      <header id="header">
+        {{ partial "header.html" . }}
+      </header>
+      {{ end }}
+      {{ block "main" . }}{{ end }}
+      <footer id="footer">
+        {{ partial "footer.html" . }}
+      </footer>
+  </div>
+</body>
+</html>

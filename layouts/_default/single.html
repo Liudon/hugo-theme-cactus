@@ -1,0 +1,36 @@
+{{ define "main" }}
+
+{{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+{{ $dateHuman := .Date | time.Format "15:04 PM, 02 Jan 2006" }}
+
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 class="posttitle p-name" itemprop="name headline">
+      {{ .Title }}
+    </h1>
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">{{ site.Params.Author }}</span>&nbsp;
+      </span>
+      <div class="postdate">
+        <time datetime="{{ $dateMachine }}" itemprop="datePublished">{{ $dateHuman }}&nbsp;</time> 
+      </div>
+
+      {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
+      {{- $terms := $.GetTerms $tags }}
+      {{ if gt (len $terms) 0 }}
+      <div class="article-tag">
+        &nbsp;<i class="fa-solid fa-tag"></i>
+        {{- range $terms }}
+          <a class="tag-link" href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
+  </header>
+  <div class="content e-content" itemprop="articleBody">
+    {{ .Content }}
+  </div>
+</article>
+
+{{ end }}

@@ -1,0 +1,7 @@
+<a class="u-url u-uid" href="/">
+    <img id="logo" alt class="u-logo" src="{{ "logo.png" | relURL }}" />
+    <div id="title">
+    <h1 class="p-name">{{ site.Title }}</h1>
+    </div>
+</a>
+{{ partial "menu.html" (dict "menuID" "main" "page" .) }}

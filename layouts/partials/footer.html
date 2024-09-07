@@ -1,0 +1,12 @@
+<div class="footer-left">
+Copyright &copy;
+{{ now.Year }}
+Powered by Hugo & Cactus
+</div>
+<div class="footer-right">
+    {{ if site.Params.icpCode }}
+    <a href="https://beian.miit.gov.cn/">{{ site.Params.icpCode}}</a>
+    {{ end }}
+</div>
+
+{{- partial "extend_footer.html" . }}

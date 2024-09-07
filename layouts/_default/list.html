@@ -1,0 +1,39 @@
+{{ define "main" }}
+
+{{- $pages := union .RegularPages .Sections }}
+
+{{- if .IsHome }}
+{{- $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{- $pages = where $pages "Params.hiddenInHomeList" "!=" "true"  }}
+{{- end }}
+
+{{- $paginator := .Paginate $pages }}
+
+<div id="archive">
+  <ul class="post-list">
+
+        {{- range $index, $page := $paginator.Pages }}
+        <li class="post-item">
+          <div class="meta">
+                <time datetime="{{ .Date.Format "Jan 02 2006"}}" itemprop="datePublished">{{ .Date.Format "Jan 02 2006"}}</time>
+          </div>
+          <span><a class="" href="{{ .Permalink }}">{{ .Title }}</a></span>
+        </li>
+        {{ end }}
+  </ul>
+  
+  {{- if gt $paginator.TotalPages 1 }}
+    <div class="pagination">
+      {{- if $paginator.HasPrev }}
+        <a href="{{ $paginator.Prev.URL | absURL }}"><i class="fa-solid fa-angle-left"></i></a>
+      {{ end }}
+        <span class="page-number">第 {{- $paginator.PageNumber }}/{{ $paginator.TotalPages }} 页</span>
+        {{- if $paginator.HasNext }}
+            <a href="{{ $paginator.Next.URL | absURL }}"><i class="fa-solid fa-angle-right"></i>
+            </a>
+        {{ end }}
+    </div>
+  {{ end }}
+</div>
+
+{{ end }}
