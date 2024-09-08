@@ -59,17 +59,6 @@
 <link crossorigin="anonymous" href="{{ $stylesheet.RelPermalink }}" rel="preload stylesheet" as="style">
 {{- end }}
 
-
-{{- $mainjs := resources.Get "js/main.js" | resources.Minify}}
-{{- $jquery := resources.Get "js/jquery.min.js"}}
-{{- if not site.Params.assets.disableFingerprinting }}
-{{- $commonjs := (slice $jquery $mainjs) | resources.Concat "js/combined.js" | fingerprint }}
-<script defer crossorigin="anonymous" src="{{ $commonjs.RelPermalink }}" integrity="{{ $commonjs.Data.Integrity }}"></script>
-{{- else }}
-{{- $commonjs := (slice $jquery $mainjs) | resources.Concat "js/combined.js" }}
-<script defer crossorigin="anonymous" src="{{ $commonjs.RelPermalink }}"></script>
-{{- end }}
-
 {{- /* Favicons */}}
 <link rel="icon" href="{{ site.Params.assets.favicon | default "favicon.ico" | absURL }}">
 <link rel="icon" type="image/png" sizes="16x16" href="{{ site.Params.assets.favicon16x16 | default "favicon-16x16.png" | absURL }}">

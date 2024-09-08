@@ -9,4 +9,56 @@ Powered by Hugo & Cactus
     {{ end }}
 </div>
 
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    /**
+     * Shows the responsive navigation menu on mobile.
+     */
+    var icon = document.querySelector("#header > #nav > ul > .icon");
+    if (icon) {
+        icon.addEventListener("click", function() {
+            var navList = document.querySelector("#header > #nav > ul");
+            navList.classList.toggle("responsive");
+        });
+    }
+
+    /**
+     * Controls the different versions of the menu in blog post articles 
+     * for Desktop, tablet and mobile.
+     */
+    if (document.querySelectorAll(".post").length) {
+        var menu = document.querySelector("#menu");
+        var nav = document.querySelector("#menu > #nav");
+        var menuIcons = document.querySelectorAll("#menu-icon, #menu-icon-tablet");
+
+        /**
+         * Display the menu on hi-res laptops and desktops.
+         */
+        if (document.documentElement.clientWidth >= 1440) {
+            menu.style.visibility = "visible";
+            menuIcons.forEach(function(icon) {
+                icon.classList.add("active");
+            });
+        }
+
+        /**
+         * Display the menu if the menu icon is clicked.
+         */
+        menuIcons.forEach(function(icon) {
+            icon.addEventListener("click", function() {
+                if (menu.style.visibility === "hidden") {
+                    menu.style.visibility = "visible";
+                    icon.classList.add("active");
+                } else {
+                    menu.style.visibility = "hidden";
+                    icon.classList.remove("active");
+                }
+                return false;
+            });
+        });
+    }
+});
+</script>
+
 {{- partial "extend_footer.html" . }}
